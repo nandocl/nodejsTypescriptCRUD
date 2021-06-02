@@ -5,7 +5,7 @@ import dotenv from 'dotenv';
 if(!process.env.LE) dotenv.config();
 
 // Import files
-import mainRouter from './api/routes/main.route'
+import mainRoutes from './api/routes'
 
 // Const
 const app = express();
@@ -18,9 +18,8 @@ import './database/mongodb.connection';
 app.use(json());
 app.use(cors());
 
-// Router
-app.get('/', (req,res) => res.status(200).send('Funcionando'));
-app.use('/user', mainRouter);
+// Routes
+app.use(mainRoutes);
 
 // Start server
 app.listen(port, () => {
